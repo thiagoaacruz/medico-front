@@ -1,0 +1,39 @@
+<h5>Consulta de Medicos</h5>
+<p>Lista dos medicos cadastrados</p>
+
+<table class="table table-striped">
+  <thead>
+        <tr>
+            <td>Nome do medico</td>
+            <td>CRM</td>
+            <td>Telefone</td>
+            <td>Tipo</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of medico">
+          <td>{{m.nome}}</td>
+          <td>{{m.crm}}</td>
+          <td>{{m.telefone}}</td>
+          <td>{{m.tipo}}</td>
+
+          <td>
+            <button class="btn btn-sm btn-primary mr"
+            [routerLink]="['/editar-medico',m.idMedico]">
+              Editar
+            </button>
+
+              &nbsp;
+
+            <button class="btn btn-sm btn-danger" (click)="excluir(m.idMedico)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">Total de registros: {{medico.length}}  </td>
+        </tr>
+    </tfoot>
+</table>
+

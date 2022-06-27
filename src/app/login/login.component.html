@@ -1,0 +1,44 @@
+<div class="row mt-5" *ngIf="exibirPagina">
+  <div class="row mt-3">
+    <div class="col-md-4 offset-4">
+      <h5>Autenticação de Usuários</h5>
+      <p>Entre com suas credenciais para realizar autenticação</p>
+
+      <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+        <label> Entre com o seu login:</label>
+        <br />
+        <input type="text" class="form-Control" placeholder="Digite aqui." formControlName="login" placeholder="Digite aqui." />
+        <div class="text-danger" *ngIf="form.login.touched && form.login.invalid">
+          <span *ngIf="form.login.errors.required">
+            Por favor, informe o login do Usuário.
+          </span>
+        </div>
+        <br /> <br />
+
+        <label> Entre com a sua Senha:</label>
+        <br />
+        <input type="password" class="form-Control" placeholder="Digite senha." formControlName="senha" placeholder="Digite aqui." />
+        <div class="text-danger" *ngIf="form.senha.touched && form.senha.invalid">
+          <span *ngIf="form.senha.errors.required">
+            Por favor, informe a senha de acesso.
+          </span>
+        </div>
+        <br /> <br />
+        <div class="d-grid mb-3">
+          <input type="submit" value="Realizar Autenticação" [disabled]="!formLogin.valid" class="btn btn-primary" />
+        </div>
+
+        <div class="d-grid mb-3">
+          <!--
+        <div *ngIf="mensagem_sucesso" class="mb-3 alert alert-success">
+          <strong>{{mensagem_sucesso}}</strong>
+        </div>
+        -->
+          <div *ngIf="mensagem_erro" class="mb-3 alert alert-danger">
+            <strong>{{mensagem_erro}}</strong>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
